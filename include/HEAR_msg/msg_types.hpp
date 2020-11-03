@@ -8,5 +8,5 @@ enum class msg_type {TESTMSG, SERIALDATA, reference, THREEAXISSENSORMSG, VELOCIT
                     controller, float_msg, FLOAT, BOOLEAN, INTEGER, switcher, VECTOR2D, VECTOR3D, 
                     POINT, POINTS, VECTOR, external_reference, ack,internal_msg_start, ROS, EMPTY, 
                     VECTORDOUBLE, DOUBLE, FILTER_POINT,
-                    RESTNORMREF_SETTINGS, XSENS, SWITCHBLOCK, SWITCHOUT,                                                            //Flight Controller
+                    RESTNORMREF_SETTINGS, IMU, SWITCHBLOCK, SWITCHOUT,                                                            //Flight Controller
                     arm_update, FLIGHTCOMMAND, INFO, RestControllerMessage, MessageToBlock, ERROR, UAV_CONTROL_STATE};              //Flight Scenario
