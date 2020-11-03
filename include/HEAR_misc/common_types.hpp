@@ -1,5 +1,4 @@
 #pragma once
-#include <stdint.h>
 #include "HEAR_misc/Timer.hpp"
 
 enum class block_id {PID_X=0, PID_Y=1, PID_Z=2, PID_ROLL=3, PID_PITCH=4, 
@@ -9,4 +8,3 @@ enum class block_id {PID_X=0, PID_Y=1, PID_Z=2, PID_ROLL=3, PID_PITCH=4,
 					MRFT_YAW=19, MRFT_YAW_RATE=20, REF_YAW_RATE=21, BB_X=22, BB_Y=23,
 					PID_MRFT_Z = 24, PID_Z_ID = 25, NULL_ID=999};
 enum class block_type {controller, provider, reference};
-

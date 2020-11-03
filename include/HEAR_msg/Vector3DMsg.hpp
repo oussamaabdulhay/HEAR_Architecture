@@ -1,21 +1,13 @@
 #pragma once
-#include "common_srv/DataMsg.hpp"
-#include "common_srv/Vector3D.hpp"
+#include "HEAR_core/DataMsg.hpp"
+#include "HEAR_math/Vector3D.hpp"
 
-class Vector3DMsg : public DataMsg{
-
-private:
-    msg_type _type;
-    Vector3D<float> _data;
-
+class Vector3DMsg : public DataMsg {
 public:
-
     msg_type getType();
     const int getSize();
     Vector3D<float> getData();
-    
     Vector3DMsg();
     ~Vector3DMsg();
-
-    void setVector3DMsg(Vector3D<float>);
+    Vector3D<float> data;
 };

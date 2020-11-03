@@ -1,15 +1,11 @@
 #pragma once
-#include "common_srv/DataMsg.hpp"
+#include "HEAR_core/DataMsg.hpp"
 
-class BooleanMsg : public DataMsg{
-
+class BooleanMsg : public DataMsg {
 public:
-
-    BooleanMsg();
-    ~BooleanMsg();
-
-    msg_type getType();
-    const int getSize();
-
+    BooleanMsg() {};
+    ~BooleanMsg() {};
+    msg_type getType() {return msg_type::BOOLEAN;};
+    const int getSize() {return sizeof(BooleanMsg);};
     bool data;
 };

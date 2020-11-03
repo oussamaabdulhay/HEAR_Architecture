@@ -10,8 +10,8 @@ class Block {
     public:
 
         virtual void process(DataMsg* t_msg, Port* t_port) = 0;
-        Block();
-        ~Block();
+        Block() {};
+        ~Block() {};
         std::vector<Port*> getPorts() {return _ports;}
 
     protected:

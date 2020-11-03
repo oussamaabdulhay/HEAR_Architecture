@@ -1,11 +1,9 @@
 #pragma once
 #include <chrono>
 
-class Timer{
-    
+class Timer {
     private:
-    std::chrono::time_point<std::chrono::system_clock> start;
-
+    std::chrono::time_point<std::chrono::system_clock> _start;
     public:
     void tick();
     int tockMicroSeconds();
