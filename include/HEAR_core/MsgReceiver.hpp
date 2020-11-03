@@ -5,6 +5,7 @@
 #pragma once
 
 #include "HEAR_core/DataMsg.hpp"
+
 class MsgReceiver {
 
 public:

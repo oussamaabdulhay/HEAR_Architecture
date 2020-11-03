@@ -4,9 +4,8 @@
 
 class Vector3DMsg : public DataMsg {
 public:
-    msg_type getType();
-    const int getSize();
-    Vector3D<float> getData();
+    msg_type getType() {return msg_type::VECTOR3D;};
+    const int getSize() {return sizeof(*this);};
     Vector3DMsg();
     ~Vector3DMsg();
     Vector3D<float> data;

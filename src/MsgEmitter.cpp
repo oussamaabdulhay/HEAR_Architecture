@@ -1,6 +1,4 @@
 #include "HEAR_core/MsgEmitter.hpp"
-using namespace std;
-
 
 MsgEmitter::MsgEmitter() {
 }
@@ -9,7 +7,7 @@ MsgEmitter::~MsgEmitter() {
 
 }
 
-void MsgEmitter::addCallbackMsgReceiver(MsgReceiver* _callback_msg_receiver){
+void MsgEmitter::addCallbackMsgReceiver(MsgReceiver* _callback_msg_receiver) {
     _list_of_msg_receivers.push_back(_callback_msg_receiver);
 }
 

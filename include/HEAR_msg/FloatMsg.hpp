@@ -6,7 +6,7 @@ class FloatMsg : public DataMsg
 public:
     FloatMsg();
     ~FloatMsg();
-    msg_type getType();
-    const int getSize();
+    msg_type getType() {return msg_type::FLOAT;};
+    const int getSize() {return sizeof(FloatMsg);};
     float data;
 };

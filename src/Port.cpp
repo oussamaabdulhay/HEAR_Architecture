@@ -1,18 +1,17 @@
-#include "common_srv/Port.hpp"
+#include "HEAR_core/Port.hpp"
 
-Port::Port(int t_id, Block* t_block){
+Port::Port(int t_id, Block* t_block) {
     this->_id = t_id;
     this->_block = t_block;
 }
 
 Port::~Port() {
-
 }
 
-int Port::getID(){
+int Port::getID() {
     return _id;
 }
 
-void Port::connect(Port* t_input_port){
+void Port::connect(Port* t_input_port) {
     this->addCallbackMsgReceiver((MsgReceiver*) t_input_port);
 }

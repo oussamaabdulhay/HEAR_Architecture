@@ -1,14 +1,10 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>common_srv</name>
+  <name>hear_architecture</name>
   <version>0.0.0</version>
-  <description>The common services package</description>
-
-  <maintainer email="yousef@todo.todo">pedrohrpbs</maintainer>
-
-
+  <description>The HEAR Architecture package</description>
+  <maintainer email="mohamad.wahbah@outlook.com">moawahbah</maintainer>
   <license>TODO</license>
-
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>message_generation</build_depend>
   <build_depend>roscpp</build_depend>
@@ -20,9 +16,6 @@
   <exec_depend>std_msgs</exec_depend>
   <exec_depend>geometry_msgs</exec_depend>
   <exec_depend>message_runtime</exec_depend>
-  
-
   <export>
-
   </export>
 </package>

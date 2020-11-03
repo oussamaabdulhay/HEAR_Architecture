@@ -7,7 +7,7 @@ class PoseMsg : public DataMsg{
 public:
     PoseMsg();
     ~PoseMsg();
-    msg_type getType();
-    const int getSize();
+    msg_type getType() {return msg_type::POSE;};
+    const int getSize() {return sizeof(PoseMsg);};
     Pose pose;
 };

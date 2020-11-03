@@ -1,8 +1,8 @@
 #pragma once
 class Port;
-#include "HEAR_core/Block.hpp"
 #include "HEAR_core/MsgReceiver.hpp"
 #include "HEAR_core/MsgEmitter.hpp"
+#include "HEAR_core/Block.hpp"
 
 class Port : public MsgReceiver, public MsgEmitter{
 

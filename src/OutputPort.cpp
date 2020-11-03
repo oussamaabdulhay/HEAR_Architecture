@@ -1,4 +1,4 @@
-#include "common_srv/OutputPort.hpp"
+#include "HEAR_core/OutputPort.hpp"
 
 OutputPort::OutputPort(int t_id, Block* t_block) : Port(t_id, t_block){
     this->_id = t_id;
@@ -6,7 +6,6 @@ OutputPort::OutputPort(int t_id, Block* t_block) : Port(t_id, t_block){
 }
 
 OutputPort::~OutputPort() {
-
 }
 
 void OutputPort::receiveMsgData(DataMsg* t_msg){
