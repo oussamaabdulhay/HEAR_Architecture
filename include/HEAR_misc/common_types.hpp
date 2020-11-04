@@ -7,3 +7,9 @@ enum class block_id {PID_X=0, PID_Y=1, PID_Z=2, PID_ROLL=3, PID_PITCH=4,
 					MRFT_YAW=19, MRFT_YAW_RATE=20, REF_YAW_RATE=21, BB_X=22, BB_Y=23,
 					PID_MRFT_Z = 24, PID_Z_ID = 25, NULL_ID=999};
 enum class block_type {controller, provider, reference};
+
+//TODO: might delete
+enum class control_system {roll=3, pitch=4, yaw=5, x=0, y=1, z=2, yaw_rate = 6};
+
+enum Dimension3D {X,Y,Z};
+enum class mission_command{TAKEOFF=0, LAND=1, NULL_TYPE=999};

@@ -9,4 +9,4 @@ enum class msg_type {TESTMSG, SERIALDATA, reference, THREEAXISSENSORMSG, VELOCIT
                     POINT, POINTS, VECTOR, external_reference, ack,internal_msg_start, ROS, EMPTY, 
                     VECTORDOUBLE, DOUBLE, FILTER_POINT,
                     RESTNORMREF_SETTINGS, IMU, SWITCHBLOCK, SWITCHOUT,                                                            //Flight Controller
-                    arm_update, FLIGHTCOMMAND, INFO, RestControllerMessage, MessageToBlock, ERROR, UAV_CONTROL_STATE};              //Flight Scenario
+                    arm_update, MISSIONCOMMAND, INFO, RestControllerMessage, MessageToBlock, ERROR, UAV_CONTROL_STATE};              //Flight Scenario
