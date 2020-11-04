@@ -5,52 +5,6 @@ add_compile_options(-std=c++11)
 
 find_package(catkin REQUIRED COMPONENTS
   roscpp
-  std_msgs
-  geometry_msgs
-  message_generation
-  genmsg
-)
-
-add_message_files(
-  FILES
-  BB_param.msg
-  Info.msg
-  MRFT_param.msg
-  PID_param.msg
-  Point2D.msg
-  Pose.msg
-  Poses.msg
-  Waypoint.msg  
-)
-
-add_service_files(
-   FILES
-   Arm.srv
-   get_float.srv
-   get_poses.srv
-   Reset_Controller.srv
-   Restricted_Norm_Settings.srv
-   set_float.srv
-   set_int.srv
-   set_point.srv
-   set_points.srv
-   set_pose.srv
-   set_poses.srv
-   set_vector.srv
-   Update_Controller_BB.srv
-   Update_Controller_MRFT.srv
-   Update_Controller_PID.srv
-   Update_Pose_Reference.srv
-   Update_X_Reference.srv
-   Update_Y_Reference.srv
-   Update_Yaw_Reference.srv
-   Update_Z_Reference.srv
-) 
-
-generate_messages(
-   DEPENDENCIES
-   std_msgs
-   geometry_msgs
 )
 
 catkin_package(
@@ -58,7 +12,6 @@ catkin_package(
   LIBRARIES ${PROJECT_NAME}
   CATKIN_DEPENDS
     roscpp
-    std_msgs
   DEPENDS
     system_lib
 )
@@ -72,20 +25,5 @@ FILE(GLOB SOURCE_FILES *.cpp
         src/*.cpp
         )
 
-add_library(${PROJECT_NAME}
-  ${SOURCE_FILES}
-)
-
-target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES})
-
-# install(
-#   TARGETS ${PROJECT_NAME}
-#   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-#   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-#   RUNTIME DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION}
-# )
-
-# install(
-#   DIRECTORY include/${PROJECT_NAME}/
-#   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
-# )
+add_executable(${PROJECT_NAME}_node ${SOURCE_FILES})
+target_link_libraries(${PROJECT_NAME}_node ${catkin_LIBRARIES})

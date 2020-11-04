@@ -4,8 +4,8 @@
 
 class Vector2DMsg : public DataMsg {
 public:
-    Vector2DMsg();
-    ~Vector2DMsg();
+    Vector2DMsg() {};
+    ~Vector2DMsg() {};
     msg_type getType() {return msg_type::VECTOR2D;};
     const int getSize() {return sizeof(*this);};
     Vector2D<float> data;

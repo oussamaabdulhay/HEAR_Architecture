@@ -1,6 +1,6 @@
 #pragma once
 #include "HEAR_mission/MissionElement.hpp"
-#include "HEAR_msg/MissionCommandMsg.hpp"
+#include "HEAR_msg/Int8Msg.hpp"
 #include "HEAR_misc/common_types.hpp"
 
 class MissionCommand : public MissionElement {

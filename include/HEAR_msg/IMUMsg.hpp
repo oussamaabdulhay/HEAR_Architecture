@@ -9,6 +9,6 @@ public:
     Quaternion _orientation; 
     msg_type getType() {return msg_type::IMU;};
     const int getSize() {return sizeof(*this);};
-    IMUMsg();
-    ~IMUMsg();
+    IMUMsg() {};
+    ~IMUMsg() {};
 };

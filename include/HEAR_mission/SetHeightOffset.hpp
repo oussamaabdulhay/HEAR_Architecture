@@ -1,6 +1,6 @@
 #pragma once
 #include "HEAR_mission/MissionElement.hpp"
-#include "HEAR_msg/PositionMsg.hpp"
+#include "HEAR_msg/Vector3DMsg.hpp"
 #include "HEAR_msg/FloatMsg.hpp"
 
 class SetHeightOffset : public MissionElement {

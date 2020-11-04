@@ -2,7 +2,7 @@
 
 #include <vector>
 #include "HEAR_actuation/ActuationSystem.hpp"
-#include "HEAR_msg/BooleanMsg.hpp"
+#include "HEAR_msg/BoolMsg.hpp"
 #include "HEAR_msg/FloatMsg.hpp"
 #include "HEAR_msg/VectorDoubleMsg.hpp"
 

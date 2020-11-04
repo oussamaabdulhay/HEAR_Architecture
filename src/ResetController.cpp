@@ -10,7 +10,7 @@ ResetController::~ResetController(){
 }
 
 void ResetController::perform(){
-    ResetControllerMsg _reset_controller_msg;
-    _reset_controller_msg.target_block=this->target_block;
+    Int8Msg _reset_controller_msg;
+    _reset_controller_msg.data=(int8_t)this->target_block;
     this->_output_port_0->receiveMsgData((DataMsg*)&_reset_controller_msg);
 }

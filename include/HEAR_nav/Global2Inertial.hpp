@@ -13,7 +13,7 @@
 #include "HEAR_msg/FloatMsg.hpp"
 #include "HEAR_msg/IntegerMsg.hpp"
 #include "HEAR_msg/Vector3DMsg.hpp"
-#include "HEAR_msg/OptitrackMessage.hpp"
+#include "HEAR_msg/OptitrackMsg.hpp"
 
 class Global2Inertial : public Block {
 private:

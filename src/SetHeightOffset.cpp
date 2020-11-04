@@ -18,6 +18,6 @@ void SetHeightOffset::perform(){
 
 void SetHeightOffset::process(DataMsg* t_msg, Port* t_port) {
     if(t_port->getID() == ports_id::IP_0) {
-        _current_z = ((PositionMsg*) t_msg)->z;
+        _current_z = ((Vector3DMsg*) t_msg)->data.z;
     }
 }

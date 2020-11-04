@@ -1,6 +1,6 @@
 #pragma once
 #include "HEAR_mission/MissionElement.hpp"
-#include "HEAR_msg/ResetControllerMsg.hpp"
+#include "HEAR_msg/Int8Msg.hpp"
 
 class ResetController : public MissionElement {
 private:

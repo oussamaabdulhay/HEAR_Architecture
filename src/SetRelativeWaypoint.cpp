@@ -53,9 +53,9 @@ void SetRelativeWaypoint::perform(){
 
 void SetRelativeWaypoint::process(DataMsg* t_msg, Port* t_port) {
     if(t_port->getID() == ports_id::IP_0) {
-        _current_x = ((PositionMsg*) t_msg)->x;
-        _current_y = ((PositionMsg*) t_msg)->y;
-        _current_z = ((PositionMsg*) t_msg)->z;
+        _current_x = ((Vector3DMsg*) t_msg)->data.x;
+        _current_y = ((Vector3DMsg*) t_msg)->data.y;
+        _current_z = ((Vector3DMsg*) t_msg)->data.z;
     }
     if(t_port->getID() == ports_id::IP_1) {
         _current_yaw = ((Vector3DMsg*) t_msg)->data.x;

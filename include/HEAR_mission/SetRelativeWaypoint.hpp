@@ -1,7 +1,6 @@
 #pragma once
 #include "HEAR_msg/PosesMsg.hpp"
 #include "HEAR_mission/MissionElement.hpp"
-#include "HEAR_msg/PositionMsg.hpp"
 #include "HEAR_msg/Vector3DMsg.hpp"
 
 class SetRelativeWaypoint : public MissionElement{

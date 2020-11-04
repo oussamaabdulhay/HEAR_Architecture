@@ -75,7 +75,7 @@ void QuadActuationSystem::command(){
     //                             HexaActuationSystem::unicast_addresses::unicast_ActuationSystem_commands,
     //                             ROSUnit_BroadcastData::ros_broadcast_channels::actuation);
 
-    BooleanMsg armed_msg;
+    BoolMsg armed_msg;
     armed_msg.data = _armed;
     this->_output_port_1->receiveMsgData((DataMsg*)&armed_msg);
     // this->emitMsgUnicast((DataMsg*) &armed_msg,

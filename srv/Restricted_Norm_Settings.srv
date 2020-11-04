@@ -1,5 +1,0 @@
-bool enabled
-bool delete_existing_waypoints
-float32 max_norm
----
-

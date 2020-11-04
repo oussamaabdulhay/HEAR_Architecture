@@ -8,7 +8,7 @@ Disarm::~Disarm(){
     
 }
 void Disarm::perform(){
-    ArmDataMsg _arm_message;
-    _arm_message.isArmed = false;
+    BoolMsg _arm_message;
+    _arm_message.data = false;
     this->_output_port_0->receiveMsgData((DataMsg*)&_arm_message);
 }

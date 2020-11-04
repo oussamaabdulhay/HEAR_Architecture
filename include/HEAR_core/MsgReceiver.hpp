@@ -9,6 +9,6 @@
 class MsgReceiver {
 
 public:
-    MsgReceiver();
+    MsgReceiver() {};
     virtual void receiveMsgData(DataMsg* t_msg) = 0;
 };

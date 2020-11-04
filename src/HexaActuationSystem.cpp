@@ -31,7 +31,7 @@ void HexaActuationSystem::process(DataMsg* t_msg, Port* t_port) {
         FloatMsg* float_msg = (FloatMsg*)t_msg;
         _u[3] = float_msg->data;
     } else if(t_port->getID() == ports_id::IP_4_ARM){
-        BooleanMsg* bool_msg = (BooleanMsg*)t_msg;
+        BoolMsg* bool_msg = (BoolMsg*)t_msg;
         _armed = bool_msg->data;
     } 
 }
@@ -94,7 +94,7 @@ void HexaActuationSystem::command(){
     commands_msg.data = _commands;
     this->_output_port_0->receiveMsgData((DataMsg*)&commands_msg);
 
-    BooleanMsg armed_msg;
+    BoolMsg armed_msg;
     armed_msg.data = _armed;
     this->_output_port_1->receiveMsgData((DataMsg*)&armed_msg);
 

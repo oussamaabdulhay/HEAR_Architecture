@@ -79,7 +79,7 @@ Global2Inertial::Global2Inertial() {
 void Global2Inertial::process(DataMsg* t_msg, Port* t_port)
 {
     if(t_port->getID() == ports_id::IP_0_OPTI_MSG){ 
-        OptitrackMessage* opti_msg = ((OptitrackMessage*)t_msg);
+        OptitrackMsg* opti_msg = ((OptitrackMsg*)t_msg);
         Vector3D<double> att_vec = getEulerfromQuaternion(opti_msg->attitude_heading);
         Vector3D<double> translate_pos = this->translatePoint(opti_msg->position);
         Vector3D<double> result_pos = this->rotatePoint(translate_pos);
