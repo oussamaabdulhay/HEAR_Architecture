@@ -13,15 +13,23 @@ find_package(catkin REQUIRED COMPONENTS
 
 add_message_files(
   FILES
+  BB_param.msg
+  Info.msg
+  MRFT_param.msg
+  PID_param.msg
+  Point2D.msg
   Pose.msg
   Poses.msg
-  Point2D.msg
+  Waypoint.msg  
 )
 
 add_service_files(
    FILES
+   Arm.srv
    get_float.srv
    get_poses.srv
+   Reset_Controller.srv
+   Restricted_Norm_Settings.srv
    set_float.srv
    set_int.srv
    set_point.srv
@@ -29,6 +37,14 @@ add_service_files(
    set_pose.srv
    set_poses.srv
    set_vector.srv
+   Update_Controller_BB.srv
+   Update_Controller_MRFT.srv
+   Update_Controller_PID.srv
+   Update_Pose_Reference.srv
+   Update_X_Reference.srv
+   Update_Y_Reference.srv
+   Update_Yaw_Reference.srv
+   Update_Z_Reference.srv
 ) 
 
 generate_messages(

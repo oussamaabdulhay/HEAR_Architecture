@@ -1,8 +1,4 @@
-//GLOBAL2INERTIAL V1.0.1
-// 18 June 2020
-// Pedro Henrique Silva
-
-#include "Global2Inertial.hpp"
+#include "HEAR_nav/Global2Inertial.hpp"
 #define DEBUG_HR_LR_DECOUPLED
 
 Global2Inertial::Global2Inertial() {
@@ -83,20 +79,17 @@ Global2Inertial::Global2Inertial() {
 void Global2Inertial::process(DataMsg* t_msg, Port* t_port)
 {
     if(t_port->getID() == ports_id::IP_0_OPTI_MSG){ 
-        
         OptitrackMessage* opti_msg = ((OptitrackMessage*)t_msg);
-        Vector3D<double> pos_point = opti_msg->getPosition();
-        Quaternion _bodyAtt = opti_msg->getAttitudeHeading();
-        Vector3D<double> att_vec = getEulerfromQuaternion(_bodyAtt);
-        Vector3D<double> translate_pos = this->translatePoint(pos_point);
+        Vector3D<double> att_vec = getEulerfromQuaternion(opti_msg->attitude_heading);
+        Vector3D<double> translate_pos = this->translatePoint(opti_msg->position);
         Vector3D<double> result_pos = this->rotatePoint(translate_pos);
       
         Vector3DMsg results_msg;
-        results_msg.setVector3DMsg(result_pos);
+        results_msg.data = result_pos;
 
         Vector3DMsg yaw_msg;
         att_vec.z -= calibrated_reference_inertial_heading;
-        yaw_msg.setVector3DMsg(att_vec);
+        yaw_msg.data = att_vec;
         
         this->_output_port_0->receiveMsgData(&results_msg);
         this->_output_port_1->receiveMsgData(&yaw_msg);
@@ -107,11 +100,11 @@ void Global2Inertial::process(DataMsg* t_msg, Port* t_port)
         std::cout << "NEW HEIGHT OFFSET = " << calib_point1.z << std::endl;
     }
     else if (t_port->getID() == ports_id::IP_2_RTK_POS){
-        Vector3D<double> results = changeLLAtoMeters(calib_point1, ((Vector3DMsg*)t_msg)->getData()); 
+        Vector3D<double> results = changeLLAtoMeters(calib_point1, ((Vector3DMsg*)t_msg)->data); 
         Vector3D<double> results_elev=offsetElevation(results,-calib_point1.z);
         Vector3D<double> results_rot=rotatePoint(results_elev);
         Vector3DMsg res_msg;
-        res_msg.setVector3DMsg(results_rot);
+        res_msg.data = results_rot;
         #ifndef DEBUG_HR_LR_DECOUPLED
         emitMsgUnicast(&res_msg,Global2Inertial::unicast_addresses::uni_RTK_pos);
         #else
@@ -119,10 +112,10 @@ void Global2Inertial::process(DataMsg* t_msg, Port* t_port)
         #endif
     }
     else if (t_port->getID() == ports_id::IP_3_RTK_XSESN_POS){
-        Vector3D<double> results = changeLLAtoMeters(calib_point1,((Vector3DMsg*)t_msg)->getData());
+        Vector3D<double> results = changeLLAtoMeters(calib_point1,((Vector3DMsg*)t_msg)->data);
         Vector3D<double> results_rot=rotatePoint(results);
         Vector3DMsg res_msg;
-        res_msg.setVector3DMsg(results_rot);
+        res_msg.data = results_rot;
         #ifdef RTK
         emitMsgUnicast(&res_msg,Global2Inertial::unicast_addresses::uni_XSens_pos);
         #else
@@ -130,24 +123,20 @@ void Global2Inertial::process(DataMsg* t_msg, Port* t_port)
         #endif
     }
     else if (t_port->getID() == ports_id::IP_4_RTK_XSESN_VEL){
-        Vector3D<double> results = transformVelocity(((Vector3DMsg*)t_msg)->getData());
         Vector3DMsg res_msg;
-        res_msg.setVector3DMsg(results);
+        res_msg.data = transformVelocity(((Vector3DMsg*)t_msg)->data);;
         this->_output_port_4->receiveMsgData(&res_msg);
     }
     else if (t_port->getID() == ports_id::IP_5_RTK_XSESN_ORI){
-        Vector3D<double> results = ((Vector3DMsg*)t_msg)->getData();
+        Vector3D<double> results = ((Vector3DMsg*)t_msg)->data;
         results.z = results.z - calibrated_reference_inertial_heading - calibrated_global_to_inertial_angle;
-
         Vector3DMsg res_msg;
-        res_msg.setVector3DMsg(results);
+        res_msg.data = results;
         this->_output_port_5->receiveMsgData(&res_msg);
     }
 }
 
 Vector3D<double> Global2Inertial::translatePoint(Vector3D<double> t_input_point){
-        
-
     Vector3D<double> origin = calib_point1;
     Vector3D<double> calibrated_input_point;
     

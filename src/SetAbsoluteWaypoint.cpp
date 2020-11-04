@@ -1,4 +1,4 @@
-#include "SetAbsoluteWaypoint.hpp"
+#include "HEAR_mission/SetAbsoluteWaypoint.hpp"
 
 SetAbsoluteWaypoint::SetAbsoluteWaypoint(float t_x, float t_y, float t_z, float t_yaw) {
     _waypoint_x = t_x;

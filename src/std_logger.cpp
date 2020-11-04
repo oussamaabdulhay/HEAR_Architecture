@@ -3,7 +3,7 @@
 using namespace std;
 void StdLogger::log(const char* t_log,LoggerLevel t_log_level){
     printLogLevel(t_log_level);
-    printf(t_log);
+    printf("%s", t_log);
     printf("\n");
 }
 
