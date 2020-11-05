@@ -1,4 +1,4 @@
-#include "HEAR_misc/Demux3D.hpp"
+#include "HEAR_core/Demux3D.hpp"
 
 Demux3D::Demux3D() {
     this->_input_port = new InputPort(ports_id::IP_0_DATA, this);

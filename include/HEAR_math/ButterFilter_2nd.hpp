@@ -1,5 +1,5 @@
 #pragma once
-#include "HEAR_misc/common_types.hpp"
+#include "HEAR_core/common_types.hpp"
 #include "HEAR_core/InputPort.hpp"
 #include "HEAR_core/OutputPort.hpp"
 #include "HEAR_core/Block.hpp"

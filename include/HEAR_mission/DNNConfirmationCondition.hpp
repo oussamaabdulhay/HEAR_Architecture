@@ -1,6 +1,6 @@
 #pragma once
 #include "HEAR_mission/Condition.hpp"
-#include "HEAR_misc/common_types.hpp"
+#include "HEAR_core/common_types.hpp"
 #include "HEAR_msg/IntegerMsg.hpp"
 #include "HEAR_core/InputPort.hpp"
 //TODO: this need refactoring - should be more general

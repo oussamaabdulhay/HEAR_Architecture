@@ -6,8 +6,8 @@
 #include "HEAR_msg/ControllerMsg.hpp"
 #include "HEAR_control/Controller.hpp"
 #include "HEAR_control/MRFT_values.hpp"
-#include "HEAR_misc/Timer.hpp"
-#include "HEAR_misc/logger.hpp"
+#include "HEAR_core/Timer.hpp"
+#include "HEAR_core/logger.hpp"
 
 class MRFTController : public Controller {
 private:

@@ -1,4 +1,4 @@
-#include "HEAR_misc/Switch.hpp"
+#include "HEAR_core/Switch.hpp"
 
 Switch::Switch(std::function<bool(float,float)> t_operation, float t_trigger_value) {
     this->_operation = t_operation;

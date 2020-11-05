@@ -2,7 +2,7 @@
 #include "HEAR_core/InputPort.hpp"
 #include "HEAR_core/OutputPort.hpp"
 #include "HEAR_core/Block.hpp"
-#include "HEAR_misc/Timer.hpp"
+#include "HEAR_core/Timer.hpp"
 #include "HEAR_msg/FloatMsg.hpp"
 
 class Differentiator : public Block {

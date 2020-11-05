@@ -1,6 +1,6 @@
 #pragma once
 #include "HEAR_mission/MissionElement.hpp"
-#include "HEAR_misc/Timer.hpp"
+#include "HEAR_core/Timer.hpp"
 
 class Wait : public MissionElement {
 public:

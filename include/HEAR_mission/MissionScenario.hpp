@@ -1,7 +1,7 @@
 #pragma once
 #include "pthread.h"
 #include <unistd.h>
-#include "HEAR_misc/logger.hpp"
+#include "HEAR_core/logger.hpp"
 #include "HEAR_mission/MissionPipeline.hpp"
 
 class MissionScenario {

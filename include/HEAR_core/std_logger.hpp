@@ -14,7 +14,7 @@
 *
 **/
 #include <stdio.h>
-#include "HEAR_misc/logger.hpp"
+#include "HEAR_core/logger.hpp"
 class StdLogger : public Logger
 {
     private:

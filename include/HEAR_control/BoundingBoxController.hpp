@@ -1,7 +1,7 @@
 #pragma once
 #include <math.h>
-#include "HEAR_misc/Timer.hpp"
-#include "HEAR_misc/logger.hpp"
+#include "HEAR_core/Timer.hpp"
+#include "HEAR_core/logger.hpp"
 #include "HEAR_msg/FloatMsg.hpp"
 #include "HEAR_msg/IntegerMsg.hpp"
 #include "HEAR_msg/Vector3DMsg.hpp"

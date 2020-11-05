@@ -7,7 +7,7 @@
 #include "Controller.hpp"
 #include "HEAR_msg/Vector3DMsg.hpp"
 #include "HEAR_msg/FloatMsg.hpp"
-#include "HEAR_misc/logger.hpp"
+#include "HEAR_core/logger.hpp"
 #include "HEAR_msg/IntegerMsg.hpp"
 #include "HEAR_core/InputPort.hpp"
 #include "HEAR_core/OutputPort.hpp"

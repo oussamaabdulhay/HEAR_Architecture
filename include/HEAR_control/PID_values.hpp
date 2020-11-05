@@ -1,6 +1,6 @@
 #pragma once
 #include <stdint.h>
-#include "HEAR_misc/common_types.hpp"
+#include "HEAR_core/common_types.hpp"
 
 class PID_parameters {
 public:

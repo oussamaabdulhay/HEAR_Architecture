@@ -1,4 +1,4 @@
-#include "HEAR_misc/Mux3D.hpp"
+#include "HEAR_core/Mux3D.hpp"
 
 Mux3D::Mux3D() {
     this->_input_port_0 = new InputPort(ports_id::IP_0_DATA, this);

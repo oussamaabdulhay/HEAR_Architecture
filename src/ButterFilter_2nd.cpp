@@ -1,4 +1,4 @@
-#include "HEAR_misc/ButterFilter_2nd.hpp"
+#include "HEAR_math/ButterFilter_2nd.hpp"
 
 ButterFilter_2nd::ButterFilter_2nd(BF_settings t_settings) {
     this->_input_port_0 = new InputPort(ports_id::IP_0_DATA, this);

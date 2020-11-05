@@ -1,4 +1,4 @@
-#include "HEAR_misc/Timer.hpp"
+#include "HEAR_core/Timer.hpp"
 
 void Timer::tick() {
     _start=std::chrono::system_clock::now();

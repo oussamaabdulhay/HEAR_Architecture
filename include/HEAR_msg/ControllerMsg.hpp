@@ -5,7 +5,7 @@
 #include "HEAR_control/PID_values.hpp"
 #include "HEAR_control/MRFT_values.hpp"
 #include "HEAR_control/BB_values.hpp"
-#include "HEAR_misc/common_types.hpp"
+#include "HEAR_core/common_types.hpp"
 
 class ControllerMsg : public DataMsg {
 public:

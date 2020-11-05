@@ -1,4 +1,4 @@
-#include "HEAR_misc/InvertedSwitch.hpp"
+#include "HEAR_core/InvertedSwitch.hpp"
 
 InvertedSwitch::InvertedSwitch(std::function<bool(float,float)> t_operation, float t_trigger_value) {
     this->_operation = t_operation;

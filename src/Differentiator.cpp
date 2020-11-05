@@ -1,4 +1,4 @@
-#include "HEAR_misc/Differentiator.hpp"
+#include "HEAR_math/Differentiator.hpp"
 
 Differentiator::Differentiator(float t_dt) {
     _dt = t_dt;
