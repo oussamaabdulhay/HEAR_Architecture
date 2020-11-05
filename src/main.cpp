@@ -82,11 +82,11 @@
 #include "HEAR_msg/RestrictedNormRefSettingsMsg.hpp"
 
 #include "HEAR_nav/Global2Inertial.hpp"
+#include "HEAR_nav/RestrictedNormWaypointRefGenerator.hpp"
 #include "HEAR_nav/Transform_InertialToBody.hpp"
 #include "HEAR_nav/Waypoint.hpp"
 #include "HEAR_nav/WrapAroundFunction.hpp"
 
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv) {
 	std::cout << "HI (:" << std::endl;
 }
