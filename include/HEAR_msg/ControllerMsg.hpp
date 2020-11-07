@@ -9,6 +9,7 @@
 
 class ControllerMsg : public DataMsg {
 public:
+    block_id id;
     PID_parameters pid_param;
     MRFT_parameters mrft_param;
     BB_parameters bb_param;
