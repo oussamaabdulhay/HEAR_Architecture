@@ -27,7 +27,6 @@ void PIDController::process(DataMsg* t_msg, Port* t_port) {
 		}
     } else if(t_port->getID() == ports_id::IP_2_RESET){
         IntegerMsg* integer_msg = (IntegerMsg*)t_msg;
-
 		if(static_cast<block_id>(integer_msg->data) == this->_id){
 			Logger::getAssignedLogger()->log("RESET CONTROLLER: %.0f", (int)this->_id, LoggerLevel::Warning);
 			this->reset();
