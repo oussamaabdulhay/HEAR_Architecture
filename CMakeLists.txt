@@ -18,6 +18,7 @@ catkin_package(
 
 include_directories(
   include
+  libs/Eigen/
   ${catkin_INCLUDE_DIRS}
 )
 

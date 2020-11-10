@@ -1,6 +1,7 @@
 {
     "files.associations": {
-        "functional": "cpp"
+        "functional": "cpp",
+        "eigen": "cpp"
     },
     "python.autoComplete.extraPaths": [
         "/home/pedrohrpbs/catkin_ws_HEAR/devel/lib/python2.7/dist-packages",

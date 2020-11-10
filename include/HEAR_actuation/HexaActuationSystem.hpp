@@ -23,9 +23,9 @@
 class HexaActuationSystem : public ActuationSystem {
 private: 
     std::vector<Actuator*> _actuators;
-    const int _escMin = 1000;
-    const int _escMin_armed = 1150;
-    const int _escMax = 2000;
+    int _escMin = 1000;
+    int _escMin_armed = 1150;
+    int _escMax = 2000;
     bool _armed = false;
     float _u[4]; //[roll, pitch, yaw, throttle]
     std::vector<double> _commands {0,0,0,0,0,0};
@@ -45,6 +45,7 @@ private:
 public:
     enum ports_id {IP_0_DATA_ROLL, IP_1_DATA_PITCH, IP_2_DATA_YAW, IP_3_DATA_Z, IP_4_ARM, OP_0_CMD, OP_1_ARM};
     void process(DataMsg* t_msg, Port* t_port);
+    void setESCValues(int, int, int);
     void command();
     int constrain(float value, int min_value, int max_value);
     HexaActuationSystem(std::vector<Actuator*>);

@@ -5,7 +5,7 @@
 #include "HEAR_control/MRFT_values.hpp"
 #include "HEAR_control/BB_values.hpp"
 
-class UpdateController : public MissionElement{
+class UpdateController : public MissionElement {
 private:
 	Port* _output_port_0;
 public:

@@ -36,6 +36,12 @@ void HexaActuationSystem::process(DataMsg* t_msg, Port* t_port) {
     } 
 }
 
+void HexaActuationSystem::setESCValues(int t_armed, int t_min, int t_max) {
+    _escMin_armed = t_armed;
+    _escMin = t_min;
+    _escMax = t_max;
+}
+
 void HexaActuationSystem::command(){
 
     //TODO split into more methods

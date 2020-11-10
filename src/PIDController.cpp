@@ -14,18 +14,17 @@ PIDController::~PIDController() {
 }
 
 void PIDController::process(DataMsg* t_msg, Port* t_port) {
-	// if(this->_id == block_id::PID_YAW) {
-	// 	std::cout << "yaaaaw rec \n";
-	// }
     if(t_port->getID() == ports_id::IP_0_DATA){
         this->runTask(t_msg);
-    } else if(t_port->getID() == ports_id::IP_1_UPDATE){
+    } 
+	else if(t_port->getID() == ports_id::IP_1_UPDATE){
         ControllerMsg* pid_msg = (ControllerMsg*)t_msg;
 		PID_parameters params = pid_msg->pid_param;
 		if(params.id == this->_id){		
 			this->update_params(&params);	
 		}
-    } else if(t_port->getID() == ports_id::IP_2_RESET){
+    } 
+	else if(t_port->getID() == ports_id::IP_2_RESET){
         IntegerMsg* integer_msg = (IntegerMsg*)t_msg;
 		if(static_cast<block_id>(integer_msg->data) == this->_id){
 			Logger::getAssignedLogger()->log("RESET CONTROLLER: %.0f", (int)this->_id, LoggerLevel::Warning);

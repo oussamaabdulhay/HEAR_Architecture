@@ -6,11 +6,12 @@ QuadActuationSystem::QuadActuationSystem(std::vector<Actuator*> t_actuators) : A
 	_input_port_1 = new InputPort(ports_id::IP_1_DATA_PITCH, this);
 	_input_port_2 = new InputPort(ports_id::IP_2_DATA_YAW, this);
 	_input_port_3 = new InputPort(ports_id::IP_3_DATA_Z, this);
+	_input_port_4 = new InputPort(ports_id::IP_4_ARM, this);
 	_output_port_0 = new OutputPort(ports_id::OP_0_CMD, this);
     _output_port_1 = new OutputPort(ports_id::OP_1_ARM, this);
-    _ports = {_input_port_0, _input_port_1, _input_port_2, _input_port_3, _output_port_0, _output_port_1};
-
+    _ports = {_input_port_0, _input_port_1, _input_port_2, _input_port_3, _input_port_4, _output_port_0, _output_port_1};
 }
+
 QuadActuationSystem::~QuadActuationSystem() {
 
 }
@@ -20,19 +21,29 @@ void QuadActuationSystem::process(DataMsg* t_msg, Port* t_port) {
         FloatMsg* float_msg = (FloatMsg*)t_msg;
         _u[0] = float_msg->data;
     } 
-    if(t_port->getID() == ports_id::IP_1_DATA_PITCH){
+    else if(t_port->getID() == ports_id::IP_1_DATA_PITCH){
         FloatMsg* float_msg = (FloatMsg*)t_msg;
         _u[1] = float_msg->data;
         this->command();
     } 
-    if(t_port->getID() == ports_id::IP_2_DATA_YAW){
+    else if(t_port->getID() == ports_id::IP_2_DATA_YAW){
         FloatMsg* float_msg = (FloatMsg*)t_msg;
         _u[2] = float_msg->data;
     } 
-    if(t_port->getID() == ports_id::IP_3_DATA_Z){
+    else if(t_port->getID() == ports_id::IP_3_DATA_Z){
         FloatMsg* float_msg = (FloatMsg*)t_msg;
-        _u[3] = float_msg->data;
+        _u[3] = float_msg->data; 
     } 
+    else if(t_port->getID() == ports_id::IP_4_ARM){
+        BoolMsg* bool_msg = (BoolMsg*)t_msg;
+        _armed = bool_msg->data;
+    } 
+}
+
+void QuadActuationSystem::setESCValues(int t_armed, int t_min, int t_max) {
+    _escMin_armed = t_armed;
+    _escMin = t_min;
+    _escMax = t_max;
 }
 
 void QuadActuationSystem::command(){

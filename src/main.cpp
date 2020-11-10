@@ -22,6 +22,7 @@
 #include "HEAR_core/Port.hpp"
 
 #include "HEAR_math/Matrix3by3.hpp"
+#include "HEAR_math/KalmanFilter.hpp"
 #include "HEAR_math/Pose.hpp"
 #include "HEAR_math/Poses.hpp"
 #include "HEAR_math/Quaternion.hpp"
