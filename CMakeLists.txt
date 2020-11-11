@@ -18,7 +18,7 @@ catkin_package(
 
 include_directories(
   include
-  libs/Eigen/
+  ${CMAKE_CURRENT_SOURCE_DIR}/libs/
   ${catkin_INCLUDE_DIRS}
 )
 

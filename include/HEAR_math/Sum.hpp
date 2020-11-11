@@ -4,8 +4,6 @@
 #include "HEAR_core/OutputPort.hpp"
 #include "HEAR_core/Block.hpp"
 #include "HEAR_msg/FloatMsg.hpp"
-#include "HEAR_msg/Vector3DMsg.hpp"
-
 
 class Sum : public Block {
 private:
