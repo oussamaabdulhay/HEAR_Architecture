@@ -11,6 +11,7 @@
 #include "HEAR_msg/IntegerMsg.hpp"
 #include "HEAR_core/InputPort.hpp"
 #include "HEAR_core/OutputPort.hpp"
+#include "HEAR_msg/Int8Msg.hpp"
 
 class PIDController : public Controller{
 

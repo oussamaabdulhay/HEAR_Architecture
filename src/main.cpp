@@ -52,7 +52,7 @@
 #include "HEAR_mission/Disarm.hpp"
 #include "HEAR_mission/DNNConfirmationCondition.hpp"
 #include "HEAR_mission/internal_states.hpp"
-#include "HEAR_mission/MissionCommand.hpp"
+#include "HEAR_mission/UserCommand.hpp"
 #include "HEAR_mission/MissionElement.hpp"
 #include "HEAR_mission/MissionPipeline.hpp"
 #include "HEAR_mission/MissionScenario.hpp"

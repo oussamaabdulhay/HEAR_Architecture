@@ -12,4 +12,4 @@ enum class block_type {controller, provider, reference};
 enum class control_system {roll=3, pitch=4, yaw=5, x=0, y=1, z=2, yaw_rate = 6};
 
 enum Dimension3D {X,Y,Z};
-enum class mission_command{TAKEOFF=0, LAND=1, NULL_TYPE=999};
+enum class user_command{TAKEOFF=0, LAND=1, NULL_TYPE=999};
