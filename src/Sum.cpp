@@ -14,7 +14,7 @@ Sum::~Sum() {
 
 }
 
-void Sum::runTask(DataMsg* t_msg) {
+void Sum::runTask() {
     FloatMsg float_msg;
     float_msg.data = this->_operation(_v1, _v2);
     this->_output_port->receiveMsgData(&float_msg);
@@ -25,11 +25,11 @@ void Sum::process(DataMsg* t_msg, Port* t_port) {
         FloatMsg* float_msg = (FloatMsg*)t_msg;
         float data = float_msg->data;
         _v1 = data;
-        this->runTask(t_msg);
+        this->runTask();
     }else if(t_port->getID() == ports_id::IP_1_DATA){ 
         FloatMsg* float_msg = (FloatMsg*)t_msg;
         float data = float_msg->data;
         _v2 = data;
-        this->runTask(t_msg);
+        this->runTask();
     }
 }
