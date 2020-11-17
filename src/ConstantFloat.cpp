@@ -15,10 +15,15 @@ ConstantFloat::~ConstantFloat() {
 void ConstantFloat::process(DataMsg* t_msg, Port* t_port) {
     if(t_port->getID() == ports_id::IP_0_DATA){
         _val = ((FloatMsg*)t_msg)->data;
+        sendVal();
     }
     else if(t_port->getID() == ports_id::IP_1_TRIGGER){
-        FloatMsg t_float_msg;
-        t_float_msg.data = _val;
-        _output_port_0->receiveMsgData((DataMsg*)&t_float_msg);
+        sendVal();
     }
+}
+
+void ConstantFloat::sendVal() {
+    FloatMsg t_float_msg;
+    t_float_msg.data = _val;
+    _output_port_0->receiveMsgData((DataMsg*)&t_float_msg);
 }

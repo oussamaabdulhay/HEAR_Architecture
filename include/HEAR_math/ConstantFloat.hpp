@@ -10,6 +10,7 @@ private:
     Port* _input_port_0;
     Port* _input_port_1;
     Port* _output_port_0;
+    void sendVal();
 public:
     ConstantFloat(float);
     enum ports_id {IP_0_DATA, IP_1_TRIGGER, OP_0_DATA};
