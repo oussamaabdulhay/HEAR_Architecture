@@ -94,4 +94,5 @@
 
 int main(int argc, char **argv) {
 	std::cout << "HI (:" << std::endl;
+	Block* myKalman = new KalmanFilter(1.f);
 }
