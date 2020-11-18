@@ -14,8 +14,6 @@ private:
 	Timer _timer;
 	block_id _id;
 	FloatMsg _command_msg;
-	const int no_switch_delay_in_ms = 20;
-	const int num_of_peak_conf_samples = 5;
 	Port* _input_port_0;
 	Port* _input_port_1;
 	Port* _input_port_2;
@@ -35,7 +33,7 @@ public:
     MRFT_parameters parameters;
 	void initialize(MRFT_parameters*);
 	//---------------
-	float mrft_anti_false_switching(float err, float beta, float h);
+	float mrft_anti_false_switching(float err, MRFT_parameters t_param);
 	//---------------
     void reset();
 	void runTask(DataMsg*);

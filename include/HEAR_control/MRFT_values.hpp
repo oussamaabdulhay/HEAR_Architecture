@@ -13,6 +13,8 @@ public:
 	float beta=0;
 	float relay_amp=0;
 	float bias=0;
+	int no_switch_delay_in_ms=20;
+	int num_of_peak_conf_samples=5;
 	block_id id = block_id::NULL_ID;	   
 };
 

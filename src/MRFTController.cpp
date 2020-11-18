@@ -47,7 +47,7 @@ void MRFTController::runTask(DataMsg* t_msg){
 	// data.y is PV_First
 	// data.z is PV_Second
     float command;	
-	command = mrft_anti_false_switching(data.x, parameters.beta, parameters.relay_amp)+parameters.bias;
+	command = mrft_anti_false_switching(data.x, parameters)+parameters.bias;
     _command_msg.data = command;
     this->_output_port->receiveMsgData(&_command_msg);
 }
@@ -57,6 +57,8 @@ void MRFTController::initialize(MRFT_parameters* para){
 	parameters.beta = para->beta;
 	parameters.relay_amp = para->relay_amp;
 	parameters.bias = para->bias;
+	parameters.no_switch_delay_in_ms = para->no_switch_delay_in_ms;
+	parameters.num_of_peak_conf_samples = para->num_of_peak_conf_samples;
 	parameters.id = para->id;
 	Logger::getAssignedLogger()->log("MRFT SETTINGS: ID_%.0f", static_cast<int>(parameters.id), LoggerLevel::Info);
 	Logger::getAssignedLogger()->log("Beta: %.2f", parameters.beta, LoggerLevel::Info);
@@ -64,7 +66,7 @@ void MRFTController::initialize(MRFT_parameters* para){
 	Logger::getAssignedLogger()->log("Bias: %.6f", parameters.bias, LoggerLevel::Info);
 }
 
-float MRFTController::mrft_anti_false_switching(float err, float beta, float h){
+float MRFTController::mrft_anti_false_switching(float err, MRFT_parameters t_param){
 	// MRFT algorithm with false switching prevention mechanism
 	// June 2020
 	// Coded By M. Chehadeh, Khalifa University
@@ -72,6 +74,10 @@ float MRFTController::mrft_anti_false_switching(float err, float beta, float h){
 
 	// mode_of_operation=0 take last e_max or e_min
 	// mode_of_operation=1 take current e_max or e_min and mirror it
+	float h = t_param.relay_amp;
+	float beta = t_param.beta;
+	int no_switch_delay_in_ms = t_param.no_switch_delay_in_ms;
+	int num_of_peak_conf_samples = t_param.num_of_peak_conf_samples;
 	int mode_of_operation = 1;
 	float output=0;
 	float e_max_o=0;
