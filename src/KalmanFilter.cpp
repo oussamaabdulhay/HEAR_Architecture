@@ -8,19 +8,19 @@ KalmanFilter::KalmanFilter(float t_u_scale) {
     
     _x << 0,
           0,
-          9.81;
+          0;
     _P << 1, 0, 0,
          0, 1, 0,
          0, 0, 1;
-    _F << 1, _dt, 0,
-         0, 1,   0,
+    _F << 1, _dt, -1*_dt*_dt*0.5*t_u_scale,
+         0, 1,   -1*_dt*t_u_scale,
          0, 0,   1;
     _G << _dt*_dt*0.5*t_u_scale,
           _dt*t_u_scale,
           0;
     _Q = _G*_war_w*_G.transpose();
     _H_pos << 1, 0, 0;
-    _R_pos = 0.05;
+    _R_pos = 0.005;
 }
 
 KalmanFilter::~KalmanFilter() {
@@ -35,7 +35,7 @@ void KalmanFilter::process(DataMsg* t_msg, Port* t_port) {
         doMeasurementStep(((FloatMsg*)t_msg)->data);
     }
     FloatMsg float_data;
-    float_data.data = _x(0,1);
+    float_data.data = _x(1,0);
     this->_output_port_0->receiveMsgData((DataMsg*) &float_data);
 }
 
