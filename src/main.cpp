@@ -24,6 +24,7 @@
 
 #include "HEAR_math/AvgFilter.hpp"
 #include "HEAR_math/Matrix3by3.hpp"
+#include "HEAR_math/InverseRotateVec.hpp"
 #include "HEAR_math/KalmanFilter.hpp"
 #include "HEAR_math/Multiply.hpp"
 #include "HEAR_math/Pose.hpp"
