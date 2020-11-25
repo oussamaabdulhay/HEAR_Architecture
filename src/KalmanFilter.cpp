@@ -34,6 +34,9 @@ void KalmanFilter::process(DataMsg* t_msg, Port* t_port) {
     else if(t_port->getID() == ports_id::IP_1_POS) {
         doMeasurementStep(((FloatMsg*)t_msg)->data);
     }
+    FloatMsg float_data;
+    float_data.data = _x(0,1);
+    this->_output_port_0->receiveMsgData((DataMsg*) &float_data);
 }
 
 void KalmanFilter::setTimeStep(float t_dt) {
