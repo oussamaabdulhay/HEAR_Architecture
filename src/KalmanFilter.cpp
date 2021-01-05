@@ -3,28 +3,33 @@
 KalmanFilter::KalmanFilter(float t_u_scale) {
     _input_port_0 = new InputPort(ports_id::IP_0_ACC, this);
     _input_port_1 = new InputPort(ports_id::IP_1_POS, this);
+    _input_port_2 = new InputPort(ports_id::IP_2_RES, this);
     _output_port_0 = new OutputPort(ports_id::OP_0_VEL, this);
-    _ports = {_input_port_0, _input_port_1, _output_port_0};
-    
-    _x << 0,
+    _ports = {_input_port_0, _input_port_1,_input_port_2, _output_port_0};
+    resetFilter();
+}
+
+KalmanFilter::~KalmanFilter() {
+
+}
+
+void KalmanFilter::resetFilter() {
+    _x << _pos_val,
           0,
           0;
     _P << 1, 0, 0,
          0, 1, 0,
          0, 0, 1;
-    _F << 1, _dt, -1*_dt*_dt*0.5*t_u_scale,
-         0, 1,   -1*_dt*t_u_scale,
+    _F << 1, _dt, -1*_dt*_dt*0.5,
+         0, 1,   -1*_dt,
          0, 0,   1;
-    _G << _dt*_dt*0.5*t_u_scale,
-          _dt*t_u_scale,
+    _G << _dt*_dt*0.5,
+          _dt,
           0;
     _Q = _G*_war_w*_G.transpose();
     _H_pos << 1, 0, 0;
     _R_pos = 0.005;
-}
-
-KalmanFilter::~KalmanFilter() {
-
+    
 }
 
 void KalmanFilter::process(DataMsg* t_msg, Port* t_port) {
@@ -32,7 +37,11 @@ void KalmanFilter::process(DataMsg* t_msg, Port* t_port) {
         doPredictionStep(((FloatMsg*)t_msg)->data);
     }
     else if(t_port->getID() == ports_id::IP_1_POS) {
+        _pos_val = ((FloatMsg*)t_msg)->data;
         doMeasurementStep(((FloatMsg*)t_msg)->data);
+    }
+    else if(t_port->getID() == ports_id::IP_2_RES) {
+        resetFilter();
     }
     FloatMsg float_data;
     float_data.data = _x(1,0);
@@ -54,3 +63,4 @@ void KalmanFilter::doMeasurementStep(float t_z) {
     _x = _x + t_K*(t_z - _H_pos*_x);
     _P = (Eigen::Matrix3f::Identity() - t_K*_H_pos)*_P;
 }
+
