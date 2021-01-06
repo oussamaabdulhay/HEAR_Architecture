@@ -3,9 +3,8 @@
 KalmanFilter::KalmanFilter(float t_u_scale) {
     _input_port_0 = new InputPort(ports_id::IP_0_ACC, this);
     _input_port_1 = new InputPort(ports_id::IP_1_POS, this);
-    _input_port_2 = new InputPort(ports_id::IP_2_RES, this);
     _output_port_0 = new OutputPort(ports_id::OP_0_VEL, this);
-    _ports = {_input_port_0, _input_port_1,_input_port_2, _output_port_0};
+    _ports = {_input_port_0, _input_port_1, _output_port_0};
     resetFilter();
 }
 
@@ -40,12 +39,19 @@ void KalmanFilter::process(DataMsg* t_msg, Port* t_port) {
         _pos_val = ((FloatMsg*)t_msg)->data;
         doMeasurementStep(((FloatMsg*)t_msg)->data);
     }
-    else if(t_port->getID() == ports_id::IP_2_RES) {
+    
+    if(std::isnan(_x(1,0))){
+        std::cout<<"RESETTING KALMAN FILTER\n";
         resetFilter();
     }
-    FloatMsg float_data;
-    float_data.data = _x(1,0);
-    this->_output_port_0->receiveMsgData((DataMsg*) &float_data);
+    else
+    {
+        FloatMsg float_data;
+        float_data.data = _x(1,0);
+        this->_output_port_0->receiveMsgData((DataMsg*) &float_data);
+    }
+    
+
 }
 
 void KalmanFilter::setTimeStep(float t_dt) {
