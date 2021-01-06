@@ -40,18 +40,16 @@ void KalmanFilter::process(DataMsg* t_msg, Port* t_port) {
         doMeasurementStep(((FloatMsg*)t_msg)->data);
     }
     
-    if(std::isnan(_x(1,0))){
-        std::cout<<"RESETTING KALMAN FILTER\n";
-        resetFilter();
-    }
-    else
-    {
+    // if(std::isnan(_x(1,0))){
+    //     std::cout<<"RESETTING KALMAN FILTER\n";
+    //     resetFilter();
+    // }
+    // else
+    // {
         FloatMsg float_data;
         float_data.data = _x(1,0);
         this->_output_port_0->receiveMsgData((DataMsg*) &float_data);
-    }
-    
-
+    //}
 }
 
 void KalmanFilter::setTimeStep(float t_dt) {
