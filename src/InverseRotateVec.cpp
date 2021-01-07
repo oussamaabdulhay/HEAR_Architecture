@@ -17,7 +17,7 @@ InverseRotateVec::~InverseRotateVec(){
 void InverseRotateVec::process(DataMsg* t_msg, Port* t_port) {
     Vector3DMsg *provider = (Vector3DMsg *)t_msg;
     if(t_port->getID() == ports_id::IP_0_VEC) {
-        _vec_data.x = -1*provider->data.y;
+        _vec_data.x = provider->data.y;
         _vec_data.y = provider->data.x;
         _vec_data.z = provider->data.z;
     }
