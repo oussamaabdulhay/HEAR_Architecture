@@ -28,7 +28,7 @@ void KalmanFilter::resetFilter() {
           0;
     _Q = _G*_war_w*_G.transpose();
     _H_pos << 1, 0, 0;
-    _R_pos = 0.005;
+    _R_pos = 0.0001;
      std::cout<<"RESETTING KALMAN FILTER\n";
     
 }
@@ -36,22 +36,23 @@ void KalmanFilter::resetFilter() {
 void KalmanFilter::process(DataMsg* t_msg, Port* t_port) {
     if(t_port->getID() == ports_id::IP_0_ACC) {
         doPredictionStep(((FloatMsg*)t_msg)->data);
+            if(std::isnan(_x(0,0)) || std::isnan(_x(1,0))){
+                resetFilter();
+            }
+            else
+            {
+                FloatMsg position_data,velocity_data;
+                position_data.data=_x(0,0);
+                velocity_data.data=_x(1,0);
+                this->_output_port_0->receiveMsgData((DataMsg*) &position_data);
+                this->_output_port_1->receiveMsgData((DataMsg*) &velocity_data);
+            }
     }
     else if(t_port->getID() == ports_id::IP_1_POS) {
         _pos_val = ((FloatMsg*)t_msg)->data;
         doMeasurementStep(((FloatMsg*)t_msg)->data);
     }
-    if(std::isnan(_x(0,0)) || std::isnan(_x(1,0))){
-        resetFilter();
-    }
-    else
-    {
-        FloatMsg position_data,velocity_data;
-        position_data.data=_x(0,0);
-        velocity_data.data=_x(1,0);
-        this->_output_port_0->receiveMsgData((DataMsg*) &position_data);
-        this->_output_port_1->receiveMsgData((DataMsg*) &velocity_data);
-    }
+
 }
 
 void KalmanFilter::setTimeStep(float t_dt) {
