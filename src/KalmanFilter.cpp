@@ -5,7 +5,8 @@ KalmanFilter::KalmanFilter(float t_u_scale) {
     _input_port_1 = new InputPort(ports_id::IP_1_POS, this);
     _output_port_0 = new OutputPort(ports_id::OP_0_POS, this);
     _output_port_1 = new OutputPort(ports_id::OP_1_VEL, this);
-    _ports = {_input_port_0, _input_port_1, _output_port_0, _output_port_1};
+    _output_port_2 = new OutputPort(ports_id::OP_2_BIAS, this);
+    _ports = {_input_port_0, _input_port_1, _output_port_0, _output_port_1, _output_port_2};
     resetFilter();
 }
 
@@ -41,11 +42,13 @@ void KalmanFilter::process(DataMsg* t_msg, Port* t_port) {
             }
             else
             {
-                FloatMsg position_data,velocity_data;
+                FloatMsg position_data, velocity_data, bias_data;
                 position_data.data=_x(0,0);
                 velocity_data.data=_x(1,0);
+                bias_data.data=_x(2,0);
                 this->_output_port_0->receiveMsgData((DataMsg*) &position_data);
                 this->_output_port_1->receiveMsgData((DataMsg*) &velocity_data);
+                this->_output_port_2->receiveMsgData((DataMsg*) &bias_data);
             }
     }
     else if(t_port->getID() == ports_id::IP_1_POS) {
