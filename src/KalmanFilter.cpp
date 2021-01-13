@@ -29,6 +29,7 @@ void KalmanFilter::resetFilter() {
           _dt,
           0;
     _Q = _G*_war_w*_G.transpose();
+    _Q(2,2)=_war_w*0.000010;
     _H_pos << 1, 0, 0;
      std::cout<<"RESETTING KALMAN FILTER\n";
 }
