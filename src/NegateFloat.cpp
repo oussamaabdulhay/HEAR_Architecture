@@ -13,7 +13,7 @@ NegateFloat::~NegateFloat() {
 void NegateFloat::process(DataMsg* t_msg, Port* t_port) {
     if(t_port->getID() == ports_id::IP_0_DATA) {
         float data = ((FloatMsg*)t_msg)->data;
-        _float_msg.data = _float_msg.data * -1;
+        _float_msg.data = data * -1.f;
         _output_port->receiveMsgData((DataMsg*)&_float_msg);
     }
 }
