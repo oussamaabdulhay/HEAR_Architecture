@@ -20,15 +20,15 @@ Eigen::Matrix<float, 3, 3> RotationMatrix3by3::Update(Vector3D<float> t_input)
     float cy = cos(t_input.z);
     
     Matrix3by3::v1.x = cp * cy;
-    Matrix3by3::v2.x = sr * sp * cy - cr * sy;
-    Matrix3by3::v3.x = cr * sp * cy + sr * sy;
+    Matrix3by3::v1.y = sr * sp * cy - cr * sy;
+    Matrix3by3::v1.z = cr * sp * cy + sr * sy;
 
-    Matrix3by3::v1.y = cp * sy;
+    Matrix3by3::v2.x = cp * sy;
     Matrix3by3::v2.y = sr * sp * sy + cr * cy;
-    Matrix3by3::v3.y = cr * sp * sy - sr * cy;
+    Matrix3by3::v2.z = cr * sp * sy - sr * cy;
 
-    Matrix3by3::v1.z = sp * -1;
-    Matrix3by3::v2.z = cp * sr;
+    Matrix3by3::v3.x = sp * -1;
+    Matrix3by3::v3.y = cp * sr;
     Matrix3by3::v3.z = cp * cr;
 
    _m << v1.x, v2.x, v3.x,

@@ -153,7 +153,7 @@ Vector3D<double> Global2Inertial::rotatePoint(Vector3D<double> t_input_point){
     RotationMatrix3by3 G_I_rot_matrix;
 
     G_I_rot_matrix.Update(euler_calib); 
-    G_I_rot_matrix.Transpose();
+    //G_I_rot_matrix.Transpose();
     calibrated_input_point = G_I_rot_matrix.TransformVector(t_input_point);
 
     return calibrated_input_point;
