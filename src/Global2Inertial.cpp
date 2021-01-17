@@ -147,16 +147,16 @@ Vector3D<double> Global2Inertial::offsetElevation(Vector3D<double> t_input,doubl
 
 Vector3D<double> Global2Inertial::rotatePoint(Vector3D<double> t_input_point){
         
-    // Vector3D<double> euler_calib;
-    // euler_calib.z = calibrated_global_to_inertial_angle;
-    // Vector3D<double> calibrated_input_point;
-    // RotationMatrix3by3 G_I_rot_matrix;
+    Vector3D<double> euler_calib;
+    euler_calib.z = calibrated_global_to_inertial_angle;
+    Vector3D<double> calibrated_input_point;
+    RotationMatrix3by3 G_I_rot_matrix;
 
-    // G_I_rot_matrix.Update(euler_calib); 
-    // G_I_rot_matrix.Transpose();
-    // calibrated_input_point = G_I_rot_matrix.TransformVector(t_input_point);
+    G_I_rot_matrix.Update(euler_calib); 
+    G_I_rot_matrix.Transpose();
+    calibrated_input_point = G_I_rot_matrix.TransformVector(t_input_point);
 
-    // return calibrated_input_point;
+    return calibrated_input_point;
 }
 
 Vector3D<double> Global2Inertial::transformVelocity(Vector3D<double> t_input_point){
