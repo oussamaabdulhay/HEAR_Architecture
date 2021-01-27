@@ -5,9 +5,9 @@
 
 class RotationMatrix3by3 : public Matrix3by3 {
     private:
-        Eigen::Matrix<float, 3, 3> _m;
+       Eigen::MatrixXd _m;
     public:
         RotationMatrix3by3();
         ~RotationMatrix3by3();
-        Eigen::Matrix<float, 3, 3> Update(Vector3D<float>);
+        Eigen::MatrixXd Update(Vector3D<float>);
 };
