@@ -56,6 +56,7 @@ void KalmanFilter::process(DataMsg* t_msg, Port* t_port) {
     }
     else if(t_port->getID() == ports_id::IP_2_RESET) {
         this->resetFilter();
+        std::cout<<"RESETTING KALMAN FILTER\n";
     }
 }
 
