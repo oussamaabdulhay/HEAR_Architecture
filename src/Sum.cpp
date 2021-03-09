@@ -21,11 +21,11 @@ void Sum::runTask() {
 }
 
 void Sum::process(DataMsg* t_msg, Port* t_port) {
-    if(t_port->getID() == ports_id::IP_0_DATA){
+    if(t_port->getID() == ports_id::IP_0_DATA){ 
         FloatMsg* float_msg = (FloatMsg*)t_msg;
         float data = float_msg->data;
-        _v1 = data;
-        this->runTask();
+        _v1 = data; //TODO: Refactor , v1 v2 retains the value. 
+        this->runTask(); //TODO: Refactor runtask is being run twice
     }else if(t_port->getID() == ports_id::IP_1_DATA){ 
         FloatMsg* float_msg = (FloatMsg*)t_msg;
         float data = float_msg->data;
