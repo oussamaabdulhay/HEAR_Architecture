@@ -12,6 +12,7 @@ private:
     Port* _output_port_0; 
     float threshold_position_t_h;
     float threshold_position_h_t;
+    float kalman_filter_error;
     float dt;
     float kf_data;
     int trigger_value;
@@ -21,6 +22,6 @@ public:
     enum ports_id {IP_0_VS, IP_1_KF ,OP_0_HOV_TRACK};
     void process(DataMsg* t_msg, Port* t_port);
     void runTask(float);
-    Threshold_status(float, float, float);
+    Threshold_status(float, float, float, float);
     ~Threshold_status();
 };

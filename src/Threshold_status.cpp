@@ -1,6 +1,6 @@
 #include "HEAR_mission/Threshold_status.hpp"
 
-Threshold_status::Threshold_status(float _threshold_pos_1,float _threshold_pos_2,float _dt ) {
+Threshold_status::Threshold_status(float _threshold_pos_1,float _threshold_pos_2, float _threshold_pos_3, float _dt ) {
     _input_port_0 = new InputPort(ports_id::IP_0_VS, this);
     _input_port_1 = new InputPort(ports_id::IP_1_KF, this);
     _output_port_0 = new OutputPort(ports_id::OP_0_HOV_TRACK, this);
@@ -8,6 +8,7 @@ Threshold_status::Threshold_status(float _threshold_pos_1,float _threshold_pos_2
 
     threshold_position_h_t = _threshold_pos_1;
     threshold_position_t_h = _threshold_pos_2;
+    kalman_filter_error = _threshold_pos_3;
     dt = 1./_dt;
 }
 
@@ -51,7 +52,7 @@ void Threshold_status::runTask(float position) {
         }
         
     }
-    else if(abs(relative_position - kf_data) < threshold_position_t_h)
+    else if(abs(relative_position - kf_data) < kalman_filter_error && abs(relative_position)<threshold_position_t_h )
     {
         if (trigger_msg.data!=1)
         {
