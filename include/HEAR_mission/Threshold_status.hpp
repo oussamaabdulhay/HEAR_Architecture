@@ -9,8 +9,8 @@ class Threshold_status : public Block {
 private:
     Port* _input_port_0;
     Port* _output_port_0; 
-    float threshold_position;
-    float threshold_velocity;
+    float threshold_position_t_h;
+    float threshold_position_h_t;
     float dt;
     int trigger_value;
     float old_value;
