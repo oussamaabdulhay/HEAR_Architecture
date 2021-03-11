@@ -36,14 +36,14 @@ void Threshold_status::process(DataMsg* t_msg, Port* t_port) {
 void Threshold_status::runTask(float position) {
 
     float relative_position; 
-    relative_position = abs(position);
+    relative_position = position;
     
 
     float relative_velocity; 
     relative_velocity = abs(position - old_value)/dt;
 
         
-    if(relative_position > threshold_position_h_t)
+    if(abs(relative_position) > threshold_position_h_t)
     {
         if (trigger_msg.data!=2.5)
         {
