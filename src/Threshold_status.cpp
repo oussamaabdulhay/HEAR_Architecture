@@ -5,8 +5,8 @@ Threshold_status::Threshold_status(float _threshold_pos_1,float _threshold_pos_2
     _output_port_0 = new OutputPort(ports_id::OP_0_HOV_TRACK, this);
     _ports = {_input_port_0, _output_port_0};
 
-    threshold_position_t_h = _threshold_pos_1;
-    threshold_position_h_t = _threshold_pos_2;
+    threshold_position_h_t = _threshold_pos_1;
+    threshold_position_t_h = _threshold_pos_2;
     dt = 1./_dt;
 }
 
@@ -37,7 +37,7 @@ void Threshold_status::runTask(float position) {
     relative_velocity = abs(position - old_value)/dt;
 
         
-    if(relative_position>threshold_position_t_h)
+    if(relative_position>threshold_position_h_t)
     {
         if (trigger_msg.data!=2.5)
         {
@@ -46,7 +46,7 @@ void Threshold_status::runTask(float position) {
         }
         
     }
-    else if(relative_position<threshold_position_h_t)
+    else if(relative_position<threshold_position_t_h)
     {
         if (trigger_msg.data!=1)
         {
