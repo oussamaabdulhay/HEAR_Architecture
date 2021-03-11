@@ -13,7 +13,8 @@ private:
     float threshold_velocity;
     float dt;
     int trigger_value;
-    float old_value; 
+    float old_value;
+    FloatMsg trigger_msg; 
 public:
     enum ports_id {IP_0 ,OP_0_HOV_TRACK};
     void process(DataMsg* t_msg, Port* t_port);

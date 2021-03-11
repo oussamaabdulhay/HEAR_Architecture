@@ -39,15 +39,19 @@ void Threshold_status::runTask(float position) {
         
     if(relative_position>threshold_position && relative_velocity>threshold_velocity)
     {
-        FloatMsg trigger_msg;
+        if (trigger_msg.data!=2.5)
+        {
         trigger_msg.data = 2.5;
         this->_output_port_0->receiveMsgData((DataMsg*) &trigger_msg);
+        }
         
     }
     else if(relative_position<threshold_position && relative_velocity<threshold_velocity)
     {
-        FloatMsg trigger_msg;
+        if (trigger_msg.data!=1)
+        {
         trigger_msg.data = 1;
         this->_output_port_0->receiveMsgData((DataMsg*) &trigger_msg);
+        }
     }
 }
