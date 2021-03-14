@@ -44,7 +44,7 @@ void Threshold_status::runTask(float position) {
     relative_velocity = abs(position - old_value)/dt;
 
         
-    if(abs(relative_position) > threshold_position_h_t)
+    if(abs(relative_position - kf_data) > threshold_position_h_t)
     {
         if (trigger_msg.data!=2.5)
         {
