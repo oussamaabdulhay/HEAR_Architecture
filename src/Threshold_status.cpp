@@ -40,8 +40,8 @@ void Threshold_status::runTask(float position) {
     relative_position = position;
     
 
-    float relative_velocity; 
-    relative_velocity = abs(position - old_value)/dt;
+    // float relative_velocity; 
+    // relative_velocity = abs(position - old_value)/dt;
 
         
     if(abs(relative_position - kf_data) > threshold_position_h_t)
