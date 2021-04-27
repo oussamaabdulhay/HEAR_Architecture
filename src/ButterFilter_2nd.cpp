@@ -16,6 +16,9 @@ ButterFilter_2nd::ButterFilter_2nd(BF_settings t_settings) {
     else if (t_settings == BF_settings::FS200FC50) {
         updateCoeff(coeff_200Hz_2nd_butter_50hz);
     }
+    else if (t_settings == BF_settings::FS100FC10) {
+        updateCoeff(coeff_100Hz_2nd_butter_10hz);
+    }
 }
 
 ButterFilter_2nd::~ButterFilter_2nd() {
