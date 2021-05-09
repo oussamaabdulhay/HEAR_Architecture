@@ -30,7 +30,7 @@ void PolyFilter::process(DataMsg* t_msg, Port* t_port){
             filt_dot_msg->data = (filt - _prev)/_dt;
             this->_output_port_0->receiveMsgData(filt_msg);
             this->_output_port_1->receiveMsgData(filt_dot_msg);
-            std::cout<<"Hello";
+            std::cout<<"Hello1";
         }
         else{
             sig_val.pop_front();
@@ -40,7 +40,7 @@ void PolyFilter::process(DataMsg* t_msg, Port* t_port){
             auto k = polyder(p);
             filt_msg->data = polyval(p, t_val.back());
             filt_dot_msg->data = polyval(k, t_val.back());
-            
+            std::cout<<"Hello2";
             this->_output_port_0->receiveMsgData(filt_msg);
             this->_output_port_1->receiveMsgData(filt_dot_msg);
         }
